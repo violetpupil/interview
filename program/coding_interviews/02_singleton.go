@@ -28,11 +28,9 @@ func GetInstance1() *single {
 var once sync.Once
 
 func GetInstance2() *single {
-	if singleInstance == nil {
-		once.Do(func() {
-			singleInstance = &single{}
-		})
-	}
+	once.Do(func() {
+		singleInstance = &single{}
+	})
 
 	return singleInstance
 }
