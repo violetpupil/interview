@@ -51,6 +51,7 @@ func reverseGroup(head, tail *Node) (*Node, *Node) {
 }
 
 // 按分组反转单链表 - 反向
+// https://github.com/lifei6671/interview-go/blob/master/question/q016.md
 func ReverseKGroupR(head *Node, k int) *Node {
 	head = Reverse(head)
 	head = ReverseKGroup(head, k)
