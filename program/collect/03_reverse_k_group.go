@@ -49,3 +49,11 @@ func reverseGroup(head, tail *Node) (*Node, *Node) {
 
 	return tail, head
 }
+
+// 按分组反转单链表 - 反向
+func ReverseKGroupR(head *Node, k int) *Node {
+	head = Reverse(head)
+	head = ReverseKGroup(head, k)
+	head = Reverse(head)
+	return head
+}
