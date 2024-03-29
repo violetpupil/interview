@@ -6,7 +6,7 @@ HTTP 是明文传输
 
 HTTPS 使用TLS加密传输，大多使用ECDHE密钥协商
 
-## RSA密钥协商
+## RSA密钥协商 - SSL/TLS 1.2
 
 ### 握手
 
