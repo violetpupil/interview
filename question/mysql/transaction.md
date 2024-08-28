@@ -11,9 +11,9 @@
 
 ### 问题
 
-- 脏读 Dirty Read
-- 不可重复读 Non-repeatable read
-- 幻读 Phantom Read
+- 脏读 dirty read
+- 不可重复读 non-repeatable read
+- 幻读 phantom read
 
 ### 隔离级别
 
