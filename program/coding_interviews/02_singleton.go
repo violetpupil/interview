@@ -24,12 +24,12 @@ func GetInstance() *single {
 }
 
 // golang实现
-// var once sync.Once
+var once sync.Once
 
-// func GetInstance() *single {
-// 	once.Do(func() {
-// 		singleInstance = &single{}
-// 	})
+func Golang() *single {
+	once.Do(func() {
+		singleInstance = &single{}
+	})
 
-// 	return singleInstance
-// }
+	return singleInstance
+}
