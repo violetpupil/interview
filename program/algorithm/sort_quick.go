@@ -27,3 +27,8 @@ func QuickSort(list []int) []int {
 
 	return append(append(QuickSort(small), equal...), QuickSort(big)...)
 }
+
+// 实现二
+// 原地(in-place)交换元素
+// left 左索引 right 右索引
+func InPlace(list []int, left, right int) {}
