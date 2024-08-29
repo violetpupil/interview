@@ -14,14 +14,16 @@ func QuickSort(list []int) []int {
 
 	pivot := list[0]
 
-	var small, big []int
-	for i := 1; i < len(list); i++ {
-		if list[i] < pivot {
-			small = append(small, list[i])
+	var small, equal, big []int
+	for _, v := range list {
+		if v < pivot {
+			small = append(small, v)
+		} else if v == pivot {
+			equal = append(equal, v)
 		} else {
-			big = append(big, list[i])
+			big = append(big, v)
 		}
 	}
 
-	return append(append(QuickSort(small), pivot), QuickSort(big)...)
+	return append(append(QuickSort(small), equal...), QuickSort(big)...)
 }
