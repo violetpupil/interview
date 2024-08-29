@@ -9,10 +9,9 @@ type single struct{}
 
 var singleInstance *single
 
-// 解法一
 var lock = &sync.Mutex{}
 
-func GetInstance1() *single {
+func GetInstance() *single {
 	if singleInstance == nil {
 		lock.Lock()
 		defer lock.Unlock()
@@ -24,13 +23,13 @@ func GetInstance1() *single {
 	return singleInstance
 }
 
-// 解法二
-var once sync.Once
+// golang实现
+// var once sync.Once
 
-func GetInstance2() *single {
-	once.Do(func() {
-		singleInstance = &single{}
-	})
+// func GetInstance() *single {
+// 	once.Do(func() {
+// 		singleInstance = &single{}
+// 	})
 
-	return singleInstance
-}
+// 	return singleInstance
+// }
