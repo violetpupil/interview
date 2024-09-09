@@ -32,25 +32,32 @@ func QuickSort(list []int) []int {
 // 原地(in-place)交换元素
 // left 左索引 right 右索引
 func QuickSortInPlace(list []int, left, right int) {
-	if left < right {
-		key := list[(left+right)/2]
-		i := left
-		j := right
-
-		for {
-			for list[i] < key {
-				i++
-			}
-			for list[j] > key {
-				j--
-			}
-			if i >= j {
-				break
-			}
-			list[i], list[j] = list[j], list[i]
-		}
-
-		QuickSortInPlace(list, left, i-1)
-		QuickSortInPlace(list, j+1, right)
+	// 左索引大于右索引，退出递归
+	if left >= right {
+		return
 	}
+
+	key := list[(left+right)/2]
+	i := left
+	j := right
+
+	for {
+		// 找到左边大于key的list[i]
+		for list[i] < key {
+			i++
+		}
+		// 找到右边小于key的list[j]
+		for list[j] > key {
+			j--
+		}
+		// 左右相遇，此时list[left]~list[i-1]都小于key，list[j+1]~list[right]都大于key
+		if i >= j {
+			break
+		}
+		// 小的放到左边，大的放到右边
+		list[i], list[j] = list[j], list[i]
+	}
+
+	QuickSortInPlace(list, left, i-1)
+	QuickSortInPlace(list, j+1, right)
 }
