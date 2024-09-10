@@ -65,7 +65,9 @@ func FindDuplicateSpace(list []int) int {
 		}
 	}
 
-	// 此时start=end，并且是重复的数字
+	// 此时start=end
+	// 上面的合法性判断，保证了至少一个数字重复
+	// 所以最后留下的就是重复的
 	return start
 }
 
