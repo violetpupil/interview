@@ -17,6 +17,7 @@ func FindDuplicate(list []int) int {
 	}
 
 	for i := 0; i < len(list); i++ {
+		// 让每个值都在对应的索引上
 		for list[i] != i {
 			if list[i] == list[list[i]] {
 				return list[i]
