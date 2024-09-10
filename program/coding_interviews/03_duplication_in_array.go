@@ -9,6 +9,7 @@ func FindDuplicate(list []int, dup *int) bool {
 		return false
 	}
 
+	// 元素不合法，也返回false
 	for _, v := range list {
 		if v < 0 || v >= len(list) {
 			return false
@@ -37,13 +38,43 @@ func FindDuplicate(list []int, dup *int) bool {
 // 时间效率优先
 // 时间复杂度 O(n)
 // 空间复杂度 O(n)
-func FindDuplicateTime(list []int) int {
-	return 0
-}
 
 // 空间效率优先
 // 时间复杂度 Ο(nlogn)
 // 空间复杂度 O(1)
 func FindDuplicateSpace(list []int) int {
-	return 0
+	// 数组不合法
+	if len(list) < 2 {
+		return -1
+	}
+	// 元素不合法
+	for _, v := range list {
+		if v < 1 || v >= len(list) {
+			return -1
+		}
+	}
+
+	start, end := 1, len(list)-1
+	for start < end {
+		middle := (start + end) / 2
+		count := FindDuplicateCount(list, start, middle)
+		if count > middle-start+1 {
+			end = middle
+		} else {
+			start = middle + 1
+		}
+	}
+
+	// 此时start=end，并且是重复的数字
+	return start
+}
+
+func FindDuplicateCount(list []int, min, max int) int {
+	var c int
+	for _, v := range list {
+		if v >= min && v <= max {
+			c++
+		}
+	}
+	return c
 }
