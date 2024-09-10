@@ -50,9 +50,11 @@ func FindDuplicateSpace(list []int) int {
 		}
 	}
 
+	// 二分法
 	start, end := 1, len(list)-1
 	for start < end {
 		middle := (start + end) / 2
+		// 计算start,middle间的元素个数
 		count := FindDuplicateCount(list, start, middle)
 		if count > middle-start+1 {
 			end = middle
