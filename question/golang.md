@@ -18,14 +18,12 @@ fmt.Println(a == b)
 
 解决方案：需要保证精度时，比如支付，使用 [decimal.Decimal](https://pkg.go.dev/github.com/shopspring/decimal) 类型
 
-### int和float转换丢失精度
+### json解码number到any，再编码数值变化
 
 ```golang
-var i float64 = 558242949628978650
-fmt.Println(int(i)) // 直接转int变为了558242949628978624
-bs, _ := json.Marshal(i)
-fmt.Println(string(bs)) // json编码变为了558242949628978600
-var j int
-json.Unmarshal(bs, &j)
-fmt.Println(j) // json解码回int，保持558242949628978600
+s := "558242949628978650"
+var a any
+json.Unmarshal([]byte(s), &a) // 底层类型为float64
+bs, _ := json.Marshal(a) // 编码float64时，精度丢失
+fmt.Println(string(bs)) // 558242949628978600
 ```
